@@ -1,7 +1,8 @@
 import React from 'react'
 import FeedbackItem from './FeedbackItem'
 
-export default function FeedbackList ({items = []}) {
+export default function FeedbackList ({items = [] , deleteFeedback}) {
+
   return (
     <div className='feedback-list'>
 
@@ -9,7 +10,7 @@ export default function FeedbackList ({items = []}) {
         {
             items.map((feedback , index)=>
                 <FeedbackItem key={index} 
-                feedback={feedback} />
+                feedback={feedback}  deleteFeedbackClick={deleteFeedback}/>
             )
         }
         
