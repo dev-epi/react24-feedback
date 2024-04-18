@@ -240,3 +240,7 @@ input:focus {
 .text-center {
   text-align: center;
 }
+
+.active{
+  color: #0a7a5b;
+}

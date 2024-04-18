@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import RatingSelect from './RatingSelect'
 
-export default function FeedbackForm({createFeedback}) {
+export default function FeedbackForm({createFeedback , editedFeedback , updateFeedback}) {
     const [text , setText]=useState('')
     const [rating , setRating] = useState(7)
     const [message , setMessage] = useState('')
@@ -10,7 +10,12 @@ export default function FeedbackForm({createFeedback}) {
         //eliminer l'action par defaut du boutton : refresh
         event.preventDefault()
 
-        createFeedback({text , rating})
+        if(editedFeedback){
+            updateFeedback({text , rating} , editedFeedback._id)
+        }else{
+            createFeedback({text , rating})
+        }
+       
         //reset form
         setSendDisabled(true)
         setText('')
@@ -26,6 +31,17 @@ export default function FeedbackForm({createFeedback}) {
             setSendDisabled(false)
         }
     }
+
+    useEffect(()=>{
+
+        if(editedFeedback){
+            setText(editedFeedback.text)
+            setRating(editedFeedback.rating)
+        }
+    } , [editedFeedback])
+
+    
+
   return (
     <div className='card'>
         <form onSubmit={addFeedback}>

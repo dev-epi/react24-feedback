@@ -1,10 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
-import FeedbackApp from './FeedbackApp';
+import FeedbackApp from './FeedbackApp'
+
 
 function App() {
   return (
-    <FeedbackApp />
+    <>
+  <FeedbackApp />
+
+    </>
   );
 }
 
