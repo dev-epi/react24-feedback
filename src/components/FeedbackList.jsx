@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import FeedbackItem from './FeedbackItem'
+import { FeedbackContext } from '../contexts/FeedbackContext'
 
-export default function FeedbackList ({items = [] , deleteFeedback , editFeedback}) {
+export default function FeedbackList () {
 
+  var {items} = useContext(FeedbackContext)
   return (
     <div className='feedback-list'>
 
@@ -10,8 +12,7 @@ export default function FeedbackList ({items = [] , deleteFeedback , editFeedbac
         {
             items.map((feedback , index)=>
                 <FeedbackItem key={index} 
-                feedback={feedback}  deleteFeedbackClick={deleteFeedback} 
-                editFeedbackClick={editFeedback}/>
+                feedback={feedback} />
             )
         }
         

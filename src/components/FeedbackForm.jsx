@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import RatingSelect from './RatingSelect'
+import { FeedbackContext } from '../contexts/FeedbackContext'
 
-export default function FeedbackForm({createFeedback , editedFeedback , updateFeedback}) {
+export default function FeedbackForm() {
+    const {createFeedback , editedFeedback , updateFeedback} = useContext(FeedbackContext)
     const [text , setText]=useState('')
     const [rating , setRating] = useState(7)
     const [message , setMessage] = useState('')
